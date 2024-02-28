@@ -1,16 +1,20 @@
 #!/bin/bash
 
+# Aggiungi i percorsi a composer e php
+export PATH=$PATH:/opt/homebrew/bin/composer
+export PATH=$PATH:/opt/homebrew/bin/php
+
 echo "Running composer install..."
 composer install --no-dev
 
 echo "Caching config..."
-php artisan config:cache
+/opt/homebrew/bin/php artisan config:cache
 
 echo "Caching routes..."
-php artisan route:cache
+/opt/homebrew/bin/php artisan route:cache
 
 echo "Running migrations..."
-php artisan migrate --force
+/opt/homebrew/bin/php artisan migrate --force
 
 # Avvia nginx e php-fpm
 service nginx start
