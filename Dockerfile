@@ -1,27 +1,20 @@
-# Usa l'immagine nginx-php-fpm come base
-FROM richarvey/nginx-php-fpm:1.10.3
+FROM richarvey/nginx-php-fpm:1.9.1
 
-# Copia tutti i file del progetto nella directory /var/www/html del container
-COPY . /var/www/html
+COPY . .
 
-# Cambia la directory di lavoro
-WORKDIR /var/www/html
+# Image config
+ENV SKIP_COMPOSER 1
+ENV WEBROOT /var/www/html/public
+ENV PHP_ERRORS_STDERR 1
+ENV RUN_SCRIPTS 1
+ENV REAL_IP_HEADER 1
 
-# Esegui i comandi necessari per configurare il progetto Laravel
-RUN composer global require hirak/prestissimo
-RUN composer install --no-dev
+# Laravel config
+ENV APP_ENV production
+ENV APP_DEBUG false
+ENV LOG_CHANNEL stderr
 
-# Cache delle configurazioni di Laravel
-RUN php artisan config:cache
+# Allow composer to run as root
+ENV COMPOSER_ALLOW_SUPERUSER 1
 
-# Cache delle rotte di Laravel
-RUN php artisan route:cache
-
-# Esegui le migrazioni del database
-RUN php artisan migrate --force
-
-# Esponi la porta 80
-EXPOSE 80
-
-# Avvia nginx-php-fpm
 CMD ["/start.sh"]
