@@ -12,5 +12,6 @@ php artisan route:cache
 echo "Running migrations..."
 php artisan migrate --force
 
-# Avvia nginx-php-fpm
-/start.sh
+# Avvia nginx e php-fpm
+nginx
+php-fpm
