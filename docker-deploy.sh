@@ -13,5 +13,5 @@ echo "Running migrations..."
 php artisan migrate --force
 
 # Avvia nginx e php-fpm
-nginx
-php-fpm
+service nginx start
+service php-fpm start
