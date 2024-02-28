@@ -39,3 +39,10 @@ services:
         value: 1
       - key: SKIP_COMPOSER
         value: 1
+
+build:
+      steps:
+        - name: Install Dependencies
+          script:
+            - composer install --no-dev
+            - php artisan migrate --force

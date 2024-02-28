@@ -93,8 +93,8 @@
                         <th>Phone</th>
                         <th>Speciality</th>
                         <th>Room</th>
-                        <th>Update</th>
                         <th>Delete</th>
+                        <th>Update</th>
                     </tr>
 
                     @foreach ($data as $doctor)
