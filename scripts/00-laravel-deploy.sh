@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 echo "Running composer install..."
-composer install --working-dir=/var/www/html
+composer install
 
 echo "Running migrations..."
 php artisan migrate --force
