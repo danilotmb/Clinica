@@ -16,5 +16,5 @@ echo "Running migrations..."
 /opt/homebrew/bin/php artisan migrate --force
 
 # Avvia nginx e php-fpm
-/opt/homebrew/etc/nginx/sbin/nginx
-/opt/homebrew/sbin/php-fpm
+/usr/local/bin/nginx
+/opt/homebrew/bin/php-fpm
