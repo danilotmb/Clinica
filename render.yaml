@@ -1,35 +1,24 @@
+# render.yaml
 databases:
-  - name: www_wpschool_it_db
+  - name: laravel_memcache_db
     plan: free
-    databaseName: www_wpschool_it
-    user: www_13237
-    password: uBaKfYFM
-    envVars:
-      - key: DB_CONNECTION
-        value: mysql
-      - key: DB_HOST
-        value: mysql.next-data.net
-      - key: DB_PORT
-        value: 3306
-      - key: DB_DATABASE
-        value: www_wpschool_it
-      - key: DB_USERNAME
-        value: www_13237
-      - key: DB_PASSWORD
-        value: uBaKfYFM
+    databaseName: laravel_memcache_db
+    user: laravel_memcache_db
 
 services:
   - type: web
-    plan: free 
+    plan: free
     name: laravel_memcache
     runtime: docker
     envVars:
+      # Database
       - key: DATABASE_URL
         fromDatabase:
-          name: www_wpschool_it_db
+          name: laravel_memcache_db
           property: connectionString
       - key: DB_CONNECTION
-        value: mysql
+        value: pgsql
+      # Laravel
       - key: APP_KEY
         sync: false
       - key: APP_ENV
@@ -38,6 +27,7 @@ services:
         value: false
       - key: LOG_CHANNEL
         value: stderr
+      # Image-specific vars (richarvey/nginx-php-fpm)
       - key: WEBROOT
         value: /var/www/html/public
       - key: RUN_SCRIPTS
