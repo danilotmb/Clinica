@@ -4,16 +4,16 @@
 export PATH=$PATH:/opt/homebrew/bin
 
 echo "Running composer install..."
-composer install --no-dev
+/opt/homebrew/bin/composer install --no-dev
 
 echo "Caching config..."
-php artisan config:cache
+/opt/homebrew/bin/php artisan config:cache
 
 echo "Caching routes..."
-php artisan route:cache
+/opt/homebrew/bin/php artisan route:cache
 
 echo "Running migrations..."
-php artisan migrate --force
+/opt/homebrew/bin/php artisan migrate --force
 
 # Avvia nginx e php-fpm
 /opt/homebrew/etc/nginx/sbin/nginx
