@@ -36,7 +36,7 @@ return [
     'mailers' => [
         'smtp' => [
             'transport' => 'smtp',
-            'host' => env('MAIL_HOST', 'sandbox.smtp.mailtrap.io'),  // Cambiato da 'smtp.mailtrap.io'
+            'host' => env('MAIL_HOST', 'smtp.gmail.com'),  // Cambiato da 'sandbox.smtp.mailtrap.io'
             'port' => env('MAIL_PORT', 587),  // Cambiato da 2525
             'encryption' => env('MAIL_ENCRYPTION', 'tls'),
             'username' => env('MAIL_USERNAME'),
