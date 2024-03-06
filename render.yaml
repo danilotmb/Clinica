@@ -1,3 +1,10 @@
+# render.yaml
+databases:
+  - name: laravel_memcache_db
+    plan: free
+    databaseName: laravel_memcache_db
+    user: laravel_memcache_db
+
 services:
   - type: web
     plan: free
