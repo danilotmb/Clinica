@@ -13,6 +13,9 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\URL;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
 
 class AdminController extends Controller
@@ -243,10 +246,30 @@ public function sendVisitReminder($userId)
     $user = User::find($userId);
 
     if ($user) {
-        $user->sendVisitReminderNotification();
-        $user->email_sent_date = Carbon::now();
-        $user->save();
-        return redirect()->back()->with('success', 'Visit reminder email sent successfully!');
+        try {
+            $mail = new PHPMailer(true);
+
+            $mail->isSMTP();
+            $mail->Host = env('MAIL_HOST');
+            $mail->Port = env('MAIL_PORT');
+            $mail->SMTPSecure = env('MAIL_ENCRYPTION');
+            $mail->SMTPAuth = true;
+            $mail->Username = env('MAIL_USERNAME');
+            $mail->Password = env('MAIL_PASSWORD');
+            $mail->setFrom(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
+            $mail->addAddress($user->email, $user->name);
+            $mail->Subject = 'Visit Reminder';
+            $mail->Body = 'Contenuto del messaggio';
+
+            $mail->send();
+
+            $user->email_sent_date = Carbon::now();
+            $user->save();
+
+            return redirect()->back()->with('success', 'Visit reminder email sent successfully!');
+        } catch (Exception $e) {
+            return redirect()->back()->with('error', 'Error sending email: ' . $mail->ErrorInfo);
+        }
     } else {
         return redirect()->back()->with('error', 'Client not found');
     }
