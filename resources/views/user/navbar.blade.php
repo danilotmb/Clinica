@@ -47,10 +47,6 @@
                           My Appointment
                       </a>
                   </li>
-                  <li class="nav-item" style="margin-left: 10px;">
-                      <a class="nav-link btn btn-primary font-weight-bold" href="{{ url('user/profile') }}"
-                          style="background-color: #00D9A5; color: white;">Profile</a>
-                  </li>
                   <li class="nav-item">
                       <form method="POST" action="{{ route('logout') }}">
                           @csrf
