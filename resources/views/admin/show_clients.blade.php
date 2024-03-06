@@ -102,34 +102,7 @@
             color: #ff0000;
         }
     </style>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('.send-email').click(function () {
-                var clientId = $(this).closest('form').data('client-id');
-                sendEmail(clientId);
-            });
-        });
     
-        function sendEmail(clientId) {
-            $.ajax({
-                type: 'POST',
-                url: '{{ route('send-visit-reminder-email') }}/' + clientId,
-                data: {
-                    '_token': $('input[name=_token]').val(),
-                },
-                success: function (data) {
-                    console.log(data);
-                    // Aggiorna la visualizzazione a tua discrezione
-                    location.reload(); // Aggiorna la pagina dopo l'invio della mail
-                },
-                error: function (error) {
-                    console.error('Errore durante l\'invio della mail', error);
-                    // Gestisci l'errore a tua discrezione
-                }
-            });
-        }
-    </script>
 </head>
 
 <body>

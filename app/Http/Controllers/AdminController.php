@@ -259,20 +259,7 @@ public function sendVisitReminder($userId)
             $mail->setFrom(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
             $mail->addAddress($user->email, $user->name);
             $mail->Subject = 'Visit Reminder';
-            $mail->Body = "
-                    <p>Gentile cliente,</p>
-                
-                    <p>Speriamo che questa email ti trovi bene. Ti informiamo che sono trascorsi 60 giorni dalla tua ultima visita presso la nostra clinica.</p>
-
-                    <p>La tua salute è importante per noi e ti consigliamo vivamente di prenotare un nuovo appuntamento per un controllo di routine. Un controllo regolare può aiutare a individuare tempestivamente eventuali problemi e mantenere la tua salute in ottimo stato.</p>
-
-                    <p>Per prenotare un appuntamento, ti invitiamo a contattarci il prima possibile. Siamo a tua disposizione per fornire il miglior servizio possibile.</p>
-
-                    <p>Grazie per la tua fiducia nella nostra clinica.</p>
-
-                    <p>Distinti saluti,</p>
-                    <p>Il team della Clinica</p>
-                    ";
+            $mail->Body = 'Contenuto del messaggio';
 
             $mail->send();
 
