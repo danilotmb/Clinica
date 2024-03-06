@@ -117,7 +117,7 @@
 
                     <div class="mb-3">
                         <label for="file">Doctor Image</label>
-                        <input type="file" id="file" name="file">
+                        <input type="file" id="file" name="file" required>
                     </div>
 
                     <div class="mb-3">
