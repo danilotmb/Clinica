@@ -14,7 +14,7 @@
                     <input type="text" class="form-control" name="email" placeholder="Email Address.." value="{{ Auth::check() ? Auth::user()->email : '' }}">
                 </div>
                 <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
-                    <input type="date" name="date" class="form-control">
+                    <input placeholder="Appointment Date.." type="date" name="date" class="form-control">
                 </div>
                 <div class="col-12 col-sm-6 py-2 wow fadeInRight" data-wow-delay="300ms">
                     <select name="doctor" id="departement" class="custom-select">
