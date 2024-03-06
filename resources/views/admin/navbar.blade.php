@@ -8,10 +8,12 @@
         </li>
       </ul>
       
-        <x-app-layout>
-
-
-        </x-app-layout>
+      <li class="nav-item">
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button type="submit" class="btn btn-primary ml-lg-3">Logout</button>
+        </form>
+    </li>
 
       </ul>
       <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
