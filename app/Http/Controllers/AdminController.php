@@ -148,8 +148,7 @@ public function addvisit()
         'doctor_id' => 'required|exists:doctors,id',
         'date' => 'required|date',
         'report' => 'required',
-        'patient_dob' => 'required|date', 
-        
+        'patient_dob' => 'required|date|before_or_equal:date',
     ]);
 
     $visit = new Visit([
